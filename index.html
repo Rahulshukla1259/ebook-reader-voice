@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=YCsew8WM"></script>
+  </head>
+  <body>
+    <div id="page">
+      <span
+        >भारतीय लिपियों में एंड्रॉइड पर लिखने में सहायक एक निःशुल्क अनुप्रयोग (अप्लिकेशन) है।</span
+      ><span
+        >भारतीय भाषाओं के लिए, बुद्धिमान कुंजीपटल</span
+      >
+
+      <span
+        > इन परिवर्तनों को करते समय फॉर्मटिंग को भी बनाये रखता है</span
+      >
+
+      <span
+      >भारतीय भाषाओं के लिए, बुद्धिमान कुंजीपटल</span
+    >
+
+    <span
+    >भारतीय भाषाओं के लिए, बुद्धिमान कुंजीपटल</span
+  >
+      <!-- <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, at maiores ut quis placeat reprehenderit necessitatibus, dolores deserunt nostrum pariatur ullam nulla iste alias aperiam ducimus voluptas odit sint! Debitis!</span><span>efgLorem ipsum dolor, sit amet consectetur adipisicing elit. Amet minus animi, assumenda itaque illum obcaecati soluta, minima, laborum unde qui temporibus iste consequuntur eaque error dolorem provident nesciunt voluptatum inventore.</span><span>abc 
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, sit ut repellendus facere dolore non ad repudiandae! Animi vitae placeat delectus nihil reprehenderit corrupti? Doloribus fuga fugit facilis dolores iusto.
+        </span> -->
+    </div>
+    <button id="speak-button">speak</button>
+  </body>
+  <script>
+    const page = document.getElementById("page");
+
+    const speakButton = document.getElementById("speak-button");
+
+    let speaking = false;
+
+    let promise=new Promise((resolve,reject)=>{
+
+        resolve()
+    })
+
+    speakButton.addEventListener("click", () => {
+      if (!speaking) {
+        let spans = document.querySelector("#page");
+        
+        
+    
+        function speaktext(i){
+        responsiveVoice.speak(spans.children[i].textContent, "Hindi Male",{onstart:function(){ spans.children[i].style.color="red" },onend:function(){
+        
+        if (i + 1 < spans.children.length) {
+                 speaktext(i + 1);
+        }
+         }});
+
+    //     if (i + 1 < spans.children.length) {
+    //             speak(i + 1);
+    // }
+
+
+      }
+  
+     speaktext(0)
+    //   promise.then(()=>{
+
+    //     speak(0)
+    //   }).then(()=>{
+
+    //     speak(1)
+    //   })
+
+    // speaktext(0)
+
+    // setTimeout(()=>{
+     
+    //     speaktext(1)
+
+    // },10000)
+    
+      
+      }})
+
+function getSelectionText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    // for Internet Explorer 8 and below. For Blogger, you should use &amp;&amp; instead of &&.
+    } else if (document.selection && document.selection.type != "Control") { 
+        text = document.selection.createRange().text;
+    }
+    return text;
+}
+ document.addEventListener("mouseup",()=>{
+
+    responsiveVoice.speak(getSelectionText(),"Hindi Male")
+ })
+
+
+  </script>
+</html>
